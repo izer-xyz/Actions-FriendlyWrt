@@ -231,6 +231,7 @@ jobs:
           exit 1
           ;;
         esac
+        SUFFIX="-lite"
         [ "${{ matrix.SET }}" == "docker" ] && SUFFIX="-docker"
         FILENAME=${MODEL}-FriendlyWrt-${{ matrix.VERSION }}${SUFFIX}.img
         DIRNAME=friendlywrt$(echo ${{ matrix.VERSION }}|awk -F . '{print $1}')${SUFFIX}
@@ -246,6 +247,7 @@ jobs:
     - name: Unpack friendlywrt rootfs
       run: |
         cd project
+        SUFFIX="-lite"
         [ "${{ matrix.SET }}" == "docker" ] && SUFFIX="-docker"
         tar xvzf "../rootfs-friendlywrt-${{ matrix.VERSION }}${SUFFIX}.tgz"
 
