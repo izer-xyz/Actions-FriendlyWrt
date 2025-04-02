@@ -81,6 +81,7 @@ jobs:
     - name: Prepare dot config and feeds
       run: |
         cd project
+        SUFFIX="-lite"
         [ "${{ matrix.SET }}" == "docker" ] && SUFFIX="-docker"
         DIRNAME=friendlywrt$(echo ${{ matrix.VERSION }}|awk -F . '{print $1}')${SUFFIX}
         CONFIG=rockchip${SUFFIX}
@@ -117,6 +118,7 @@ jobs:
       run: |
         cd project
         source .current_config.mk
+        SUFFIX="-lite"
         [ "${{ matrix.SET }}" == "docker" ] && SUFFIX="-docker"
         rootfs_filename="rootfs-friendlywrt-${{ matrix.VERSION }}${SUFFIX}.tgz"
         tar cvzf ../artifact/${rootfs_filename} ${FRIENDLYWRT_SRC}/${FRIENDLYWRT_ROOTFS} \
@@ -191,7 +193,7 @@ jobs:
       with:
         repository: ${{ github.repository }}
         tag: ${{ needs.prepare_release.outputs.release_tag }}
-        fileName: "rootfs-friendlywrt-${{ matrix.VERSION }}.tgz"
+        fileName: "rootfs-friendlywrt-${{ matrix.VERSION }}-lite.tgz"
 
     - name: Download friendlywrt rootfs (docker)
       if: matrix.SET == 'docker'
