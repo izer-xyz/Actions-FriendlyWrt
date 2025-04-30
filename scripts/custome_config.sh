@@ -10,5 +10,5 @@ CONFIG_PACKAGE_kmod-usb-dwc2=y
 CONFIG_PACKAGE_iw=y
 EOL
 
-echo Force .config (configs/rockchip-lite/01-lite)
+echo Force .config from configs/rockchip-lite/01-lite
 cp configs/rockchip-lite/01-lite  friendlywrt/.config
