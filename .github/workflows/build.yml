@@ -235,6 +235,9 @@ jobs:
         FILENAME=${MODEL}-FriendlyWrt-${{ matrix.VERSION }}${SUFFIX}.img
         DIRNAME=friendlywrt$(echo ${{ matrix.VERSION }}|awk -F . '{print $1}')${SUFFIX}
         CONFIG=rockchip${SUFFIX}
+        echo Change image size to 255GB and disable /opt partition
+        sed -e "s/ENABLE_OPT_PARTITION=true/ENABLE_OPT_PARTITION=false/g" device/friendlyelec/${{ matrix.CPU }}/base.mk
+        sed -e "s/TARGET_SD_IMAGESIZE=1500/TARGET_SD_IMAGESIZE=255/g"     device/friendlyelec/${{ matrix.CPU }}/base.mk
         cat > .current_config.mk <<EOL
         . device/friendlyelec/${{ matrix.CPU }}/base.mk
         TARGET_IMAGE_DIRNAME=${DIRNAME}
