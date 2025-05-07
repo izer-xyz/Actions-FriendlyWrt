@@ -13,7 +13,7 @@ EOL
 echo Force .config from configs/rockchip-lite/01-lite
 cp configs/rockchip-lite/01-lite  friendlywrt/.config
 
-echo Change image size 
+echo Change image size to 255GB and disable /opt partition
 
-sed -e "s/ENABLE_OPT_PARTITION=true/ENABLE_OPT_PARTITION=false/g" rk3528/base.mk
-sed -e "s/TARGET_SD_IMAGESIZE=1500/TARGET_SD_IMAGESIZE=255/g" rk3528/base.mk
+sed -e "s/ENABLE_OPT_PARTITION=true/ENABLE_OPT_PARTITION=false/g" device/friendlyelec/rk3528/base.mk
+sed -e "s/TARGET_SD_IMAGESIZE=1500/TARGET_SD_IMAGESIZE=255/g"     device/friendlyelec/rk3528/base.mk
