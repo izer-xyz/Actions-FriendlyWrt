@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+ls -la *
+ls -la */*
+ls -la ..
+
 mkdir configs/rockchip-lite
 curl -o configs/rockchip-lite/01-lite https://downloads.openwrt.org/releases/24.10.0/targets/rockchip/armv8/config.buildinfo
 
