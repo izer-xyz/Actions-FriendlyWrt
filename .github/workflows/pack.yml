@@ -116,7 +116,7 @@ jobs:
         TARGET_FRIENDLYWRT_CONFIG=${CONFIG}
         TARGET_SD_RAW_FILENAME=${FILENAME}
         ENABLE_OPT_PARTITION=false
-        TARGET_SD_IMAGESIZE=300
+        TARGET_SD_IMAGESIZE=1024
         TARGET_ROOTFS_PARTSIZE=0
         EOL
         echo "##[set-output name=img_filename;]$FILENAME"
