@@ -64,7 +64,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         repository: ${{ github.repository }}
-        tag: ${{ needs.prepare_release.outputs.release_tag }}
+        tag: ${{ github.event.inputs.release_tag }}
         fileName: "rootfs-friendlywrt-${{ matrix.VERSION }}-lite.tgz"
 
     - name: Download friendlywrt rootfs (docker)
@@ -74,7 +74,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         repository: ${{ github.repository }}
-        tag: ${{ needs.prepare_release.outputs.release_tag }}
+        tag: ${{ github.event.inputs.release_tag }}
         fileName: "rootfs-friendlywrt-${{ matrix.VERSION }}-docker.tgz"
 
     - name: Prepare config
@@ -155,5 +155,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./artifact/${{ steps.config.outputs.img_filename }}.gz
         asset_name: ${{ steps.config.outputs.img_filename }}.gz
-        tag: ${{ needs.prepare_release.outputs.release_tag }}
+        tag: ${{ github.event.inputs.release_tag }}
         overwrite: true
