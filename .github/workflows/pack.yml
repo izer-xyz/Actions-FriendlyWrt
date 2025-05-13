@@ -145,9 +145,9 @@ jobs:
       id: build_sd_image
       run: |
         cd project
-        ls -la out
         du -hs out/*
         ./build.sh sd-img
+        du -hs out/*
         mv out/${{ steps.config.outputs.img_filename }} ../artifact/
         cd ../artifact/
         gzip *.img
