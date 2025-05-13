@@ -116,7 +116,7 @@ jobs:
         TARGET_FRIENDLYWRT_CONFIG=${CONFIG}
         TARGET_SD_RAW_FILENAME=${FILENAME}
         ENABLE_OPT_PARTITION=false
-        TARGET_SD_IMAGESIZE=576
+        TARGET_SD_IMAGESIZE=640
         TARGET_ROOTFS_PARTSIZE=0
         EOL
         echo "##[set-output name=img_filename;]$FILENAME"
@@ -145,9 +145,9 @@ jobs:
       id: build_sd_image
       run: |
         cd project
-        ./build.sh sd-img
         ls -la out
         du -hs out/*
+        ./build.sh sd-img
         mv out/${{ steps.config.outputs.img_filename }} ../artifact/
         cd ../artifact/
         gzip *.img
